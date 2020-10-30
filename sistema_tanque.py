@@ -89,9 +89,13 @@ class Tanque:
     def imprimir_nome_torneiras(self, nome: Torneira, vazao:Torneira):
         print(f'O nome da torneira é {self.nome} e sua vazão é {self.vazao} l/s' )
 
-    def recargar_reservatorio(self):
-        pass
-
+    def recargar_reservatorio(self, recarga):
+        if self.capacidade_atual + recarga <= self.capacidade_max:
+            self.capacidade_atual += recarga
+            print('Tanque recarregado com sucesso')
+        else:
+            print("A recarga não pode ser concluída")
+            
     def remover_torneira(self, nome_torneira: str):
         self.historico = nome_torneira
         if nome_torneira is None:
@@ -100,11 +104,26 @@ class Tanque:
           self.historico.remove(nome_torneira)
           return True
 
-    def calcular_tempo_esvaziamento(self):
-        for vazao in self.torneiras_saida:
-            soma_vazao += self.torneiras_saida
+    def calcular_tempo_esvaziamento(self, vazao):
+        soma_vazao = 0
+        for i in self.torneiras_saida:
+            soma_vazao += i.vazao
             esvaziamento = self.capacidade_atual / soma_vazao
+            print(esvaziamento)
             return True
 
-    def atualizar_torneira(self):
-        pass
+    def atualizar_torneira(self, procurar_torneira, nova_vazao: Torneira):
+        try: 
+            for i in self.torneiras_saida:
+                if i == procurar_torneira:
+                    self.vazao = nova_vazao
+                    print("vazão atualizada com sucesso")
+                    return True
+            for i in self.torneiras_entrada:
+                if i == procurar_torneira:
+                    self.vazao = nova_vazao
+                    print("vazão atualizada com sucesso")
+                    return True
+        except:
+            print("torneira não encontrada")
+            return False
