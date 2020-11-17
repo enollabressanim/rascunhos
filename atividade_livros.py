@@ -15,12 +15,14 @@ class CadastroLivro:
     def cadastrar_livros(self, titulo: str, autor: str, estado: str, emprestado: bool, assunto: str):
         for livro in self.lista_livros:
             if livro.titulo == titulo:
-                print("entrou aqui")
+                print("O livro já possui cadastro!")
                 return False
-            novo_livro = livro(titulo, autor, estado, emprestado, assunto)
-            self.lista_livros.append(novo_livro)
-            print("agora entrou aqui")
-    
+            else:
+                novo_livro = livro(titulo, autor, estado, emprestado, assunto)
+                self.lista_livros.append(novo_livro)
+                print("Livro cadastrado com sucesso!")
+                return True
+        
     def remover_livro(self, titulo: str):
         for livro in self.lista_livros:
             if livro.titulo == titulo:
@@ -53,13 +55,11 @@ class GerenciadorSistema:
                 estado = input("Estado de consevação? (bom/ruim) ")
                 emprestado = input("Está sendo emprestado? (s/n) ")
                 assunto =   input("Assunto: ")
-                resultado = self.cadastro.cadastrar_livros(titulo, autor, estado, emprestado, assunto)
-                a = CadastroLivro()
-                a.imprimir_livros()
-                if resultado is None:
-                    print("Livro cadastrado com sucesso!")
-                else: 
-                    print("O livro já possui cadastro!")
+                resultado = CadastroLivro().cadastrar_livros(titulo, autor, estado, emprestado, assunto)
+                #if resultado is None:
+                #   print("Livro cadastrado com sucesso!")
+                #else: 
+                #   print("O livro já possui cadastro!")
             
             elif alternativa == 2:
                 titulo = input("Digite o titulo do livro que desejas remover do sistema: ")

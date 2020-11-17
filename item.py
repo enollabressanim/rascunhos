@@ -15,12 +15,13 @@ class Item:
 class Estoque:
 
     def __init__(self):
-        self.lista_itens = []
+      pass  
 
     def cadastrar_item(self, nome: str, codigo: int, quantidade: int):
         for item in self.lista_itens:
             if item.codigo == codigo:
                 return  False
+            
             novo_item = Item(nome, codigo, quantidade)
             self.lista_itens.append(novo_item)
             return True

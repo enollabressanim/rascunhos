@@ -1,5 +1,8 @@
 """Esse módulo tem as classes que representam o problema do tanque.
 """
+
+
+
 class Torneira:
     """Essa classe representa uma torneira do mundo real, tendo com atributos a vazão e um nome para identificar ela.
     """
@@ -13,10 +16,8 @@ class Torneira:
         self.vazao = vazao
         self.nome = nome
 
-    def modificar_vazao(self, nova_vazao:float):
-        self.vazao = nova_vazao
-        self.nova_vazao = nova_vazao
-        print(f'A vazão foi atualizada para {self.nova_vazao} l/s')
+    def modificar_vazao(self):
+        pass
 
 
 class Tanque:
@@ -86,44 +87,17 @@ class Tanque:
                     return True
         return False
 
-    def imprimir_nome_torneiras(self, nome: Torneira, vazao:Torneira):
-        print(f'O nome da torneira é {nome} e sua vazão é {vazao} l/s' )
+    def recargar_reservatorio(self):
+        pass
 
-    def recargar_reservatorio(self, recarga):
-        if self.capacidade_atual + recarga <= self.capacidade_max:
-            self.capacidade_atual += recarga
-            print('Tanque recarregado com sucesso')
-        else:
-            print("A recarga não pode ser concluída")
-            
-    def remover_torneira(self, nome_torneira: str):
-        self.historico = nome_torneira
-        if nome_torneira is None:
-          return False
-        else:
-          self.historico.remove(nome_torneira)
-          return True
+    def imprimir_nome_torneiras(self):
+        pass
 
-    def calcular_tempo_esvaziamento(self, vazao):
-        soma_vazao = 0
-        for i in self.torneiras_saida:
-            soma_vazao += i.vazao
-            esvaziamento = self.capacidade_atual / soma_vazao
-            print(esvaziamento)
-            return True
+    def remover_torneira(self):
+        pass
 
-    def atualizar_torneira(self, procurar_torneira, nova_vazao: Torneira):
-        try: 
-            for i in self.torneiras_saida:
-                if i == procurar_torneira:
-                    self.vazao = nova_vazao
-                    print("vazão atualizada com sucesso")
-                    return True
-            for i in self.torneiras_entrada:
-                if i == procurar_torneira:
-                    self.vazao = nova_vazao
-                    print("vazão atualizada com sucesso")
-                    return True
-        except:
-            print("torneira não encontrada")
-            return False
+    def calcular_tempo_esvaziamento(self):
+        pass
+
+    def atualizar_torneira(self):
+        pass
